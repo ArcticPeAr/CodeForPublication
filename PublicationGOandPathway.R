@@ -8,9 +8,9 @@ library(gprofiler2)
 
 ## Loading data with EntrezID, gene_names, FDR, P-value and log fold change
 # The samples are C7-T8, C1-T2, and C1-T8
-dataC1T2 <- read_excel("/home/petear/PublicationPaper/C1-T2.xlsx")
-dataC1T8 <- read_excel("/home/petear/PublicationPaper/C1-T8.xlsx")
-dataC7T8 <- read_excel("/home/petear/PublicationPaper/C7-T8.xlsx")
+dataC1T2 <- read_excel("/home/petear/MEGA/TormodGroup/PublicationPaper/C1-T2.xlsx")
+dataC1T8 <- read_excel("/home/petear/MEGA/TormodGroup/PublicationPaper/C1-T8.xlsx")
+dataC7T8 <- read_excel("/home/petear/MEGA/TormodGroup/PublicationPaper/C7-T8.xlsx")
 
 ## Extracting the EntrezID from the data
 # ENTREZID could be replaced with gene_names
@@ -123,8 +123,5 @@ ego_KEGG_C7T8 <- enrichKEGG(gene = genesC7T8,
 
 # gProfileR
 # Biological Process
-gprofiler2_BP_C1T2 <- gprofiler2(genesC1T2, 
-                                 organism = "hsapiens",
-                                 domain = "biological_process",
-                                 significant = TRUE)
-                                 
+gprofiler2_BP_C1T2 <- gost(, organism = "hsapiens", domain = "BP", arg = list(orderBy = "p_value", orderDir = "asc"))
+results <- gost(query = genesC1T2, organism = "hsapiens", sources = c("GO:BP", "KEGG"))
